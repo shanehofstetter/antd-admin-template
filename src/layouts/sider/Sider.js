@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {Icon, Layout, Menu} from 'antd';
 import './Sider.scss';
 import logo from "../../logo.svg";
+import {NavLink} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 let firstRender = true;
 
@@ -10,7 +12,8 @@ const Sider = (props) => {
         isMobile,
         collapsed,
         onCollapseChange,
-        theme = 'light'
+        theme = 'light',
+        width = 256
     } = props;
 
     useEffect(() => {
@@ -19,7 +22,7 @@ const Sider = (props) => {
 
     return (
         <Layout.Sider
-            width={256}
+            width={width}
             breakpoint="lg"
             trigger={null}
             collapsible
@@ -33,29 +36,33 @@ const Sider = (props) => {
             theme={theme}
         >
             <div className={"brand"}>
-                <div className={"logo"}>
-                    <img alt="logo" src={logo}/>
-                    {collapsed ? null : <h1>Admin Template</h1>}
-                </div>
+                <NavLink to={'/'}>
+                    <div className={"logo"}>
+                        <img alt="logo" src={logo}/>
+                        {collapsed ? null : <h1>Admin Template</h1>}
+                    </div>
+                </NavLink>
             </div>
 
             <div className={"menuContainer"}>
-                <Menu theme={theme} mode="inline" defaultSelectedKeys={['4']}>
-                    <Menu.Item key="1">
-                        <Icon type="user"/>
-                        <span className="nav-text">nav 1</span>
+                <Menu theme={theme} mode="inline" defaultSelectedKeys={[props.location.pathname]}>
+                    <Menu.Item key="/users">
+                        <NavLink to="/users">
+                            <Icon type="user"/>
+                            <span className="nav-text">users</span>
+                        </NavLink>
                     </Menu.Item>
-                    <Menu.Item key="2">
-                        <Icon type="video-camera"/>
-                        <span className="nav-text">nav 2</span>
+                    <Menu.Item key="/videos">
+                        <NavLink to="/videos">
+                            <Icon type="video-camera"/>
+                            <span className="nav-text">videos</span>
+                        </NavLink>
                     </Menu.Item>
-                    <Menu.Item key="3">
-                        <Icon type="upload"/>
-                        <span className="nav-text">nav 3</span>
-                    </Menu.Item>
-                    <Menu.Item key="4">
-                        <Icon type="user"/>
-                        <span className="nav-text">nav 4</span>
+                    <Menu.Item key="/items">
+                        <NavLink to="/items">
+                            <Icon type="shopping-cart"/>
+                            <span className="nav-text">items</span>
+                        </NavLink>
                     </Menu.Item>
                 </Menu>
             </div>
@@ -64,4 +71,4 @@ const Sider = (props) => {
 };
 
 
-export default Sider;
+export default withRouter(Sider);
