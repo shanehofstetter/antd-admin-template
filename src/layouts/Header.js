@@ -1,7 +1,6 @@
-import {Icon} from "antd";
+import {Layout, Avatar, Icon, Menu, Dropdown} from "antd";
 import * as classnames from "classnames";
 import React from "react";
-import {Layout} from "antd";
 
 const Header = (props) => {
 
@@ -10,16 +9,48 @@ const Header = (props) => {
         isSiderCollapsed = false
     } = props;
 
-    return <Layout.Header style={{background: '#fff', padding: 0, boxShadow: '0 1px 4px rgba(0,21,41,.08)'}}>
-        <div className={'button'}
-             onClick={onSiderToggle}
-        >
-            <Icon
-                type={classnames({
-                    'menu-unfold': isSiderCollapsed,
-                    'menu-fold': !isSiderCollapsed,
-                })}
-            />
+    const menu = (
+        <Menu className={'user-menu'} selectedKeys={[]}>
+            <Menu.Item key="userCenter">
+                <Icon type="user"/>
+                Account
+            </Menu.Item>
+            <Menu.Item key="userinfo">
+                <Icon type="setting"/>
+                Settings
+            </Menu.Item>
+            <Menu.Divider/>
+            <Menu.Item key="logout">
+                <Icon type="logout"/>
+                Logout
+            </Menu.Item>
+        </Menu>
+    );
+
+    return <Layout.Header>
+        <div className={'left-content'}>
+            <div className={'button'}
+                 onClick={onSiderToggle}
+            >
+                <Icon
+                    type={classnames({
+                        'menu-unfold': isSiderCollapsed,
+                        'menu-fold': !isSiderCollapsed,
+                    })}
+                />
+            </div>
+        </div>
+        <div className={'right-content'}>
+            <Dropdown overlay={menu}>
+            <div className={'user-menu'}>
+              <Avatar
+                  size="small"
+                  className={'user-avatar'}
+                  icon="user"
+                  alt="avatar"
+              />
+            </div>
+            </Dropdown>
         </div>
     </Layout.Header>
 };

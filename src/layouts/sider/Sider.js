@@ -49,19 +49,19 @@ const Sider = (props) => {
                     <Menu.Item key="/users">
                         <NavLink to="/users">
                             <Icon type="user"/>
-                            <span className="nav-text">users</span>
+                            <span className="nav-text">Users</span>
                         </NavLink>
                     </Menu.Item>
                     <Menu.Item key="/videos">
                         <NavLink to="/videos">
                             <Icon type="video-camera"/>
-                            <span className="nav-text">videos</span>
+                            <span className="nav-text">Videos</span>
                         </NavLink>
                     </Menu.Item>
                     <Menu.Item key="/items">
                         <NavLink to="/items">
                             <Icon type="shopping-cart"/>
-                            <span className="nav-text">items</span>
+                            <span className="nav-text">Items</span>
                         </NavLink>
                     </Menu.Item>
                 </Menu>

@@ -1,5 +1,6 @@
 import {Button, Table} from "antd";
 import React from "react";
+import {BaseContent} from "../layouts/BaseContent";
 
 const Users = (props) => {
 
@@ -13,13 +14,14 @@ const Users = (props) => {
         title: 'Address',
         dataIndex: 'address',
     }, {
-        title: 'Actions',
+        title: '',
         dataIndex: '',
+        align: 'right',
         key: 'x',
         render: (user) => {
             return <div>
-                <Button icon={'edit'} type="primary" style={{marginRight: '10px'}}>Edit</Button>
-                <Button icon={'delete'} type="danger">Delete</Button>
+                <Button icon={'edit'} type="primary">Edit</Button>
+                <Button icon={'delete'} type="danger" style={{marginLeft: '10px'}}>Delete</Button>
             </div>;
         },
     }];
@@ -56,13 +58,13 @@ const Users = (props) => {
         }),
     };
 
-    return <React.Fragment>
+    return <BaseContent>
         <div style={{float: 'right', marginBottom: '10px'}}>
             <Button icon={'plus'}>Create</Button>
         </div>
         <div style={{clear: 'both'}}/>
         <Table rowSelection={rowSelection} columns={columns} dataSource={data} rowKey={'id'}/>
-    </React.Fragment>
+    </BaseContent>
 };
 
 export default Users;
