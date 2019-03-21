@@ -1,6 +1,8 @@
 import {Button, Table} from "antd";
 import React from "react";
-import {BaseContent} from "../layouts/BaseContent";
+import {BaseContent} from "../../layouts/BaseContent";
+import ButtonLink from "../common/ButtonLink";
+import PageHeaderWrapper from "../../layouts/PageHeaderWrapper";
 
 const Users = (props) => {
 
@@ -20,8 +22,8 @@ const Users = (props) => {
         key: 'x',
         render: (user) => {
             return <div>
-                <Button icon={'edit'} type="primary">Edit</Button>
-                <Button icon={'delete'} type="danger" style={{marginLeft: '10px'}}>Delete</Button>
+                <Button icon={'edit'} shape="circle" type="primary"/>
+                <Button icon={'delete'} shape="circle" type="danger" style={{marginLeft: '10px'}}/>
             </div>;
         },
     }];
@@ -58,13 +60,12 @@ const Users = (props) => {
         }),
     };
 
-    return <BaseContent>
-        <div style={{float: 'right', marginBottom: '10px'}}>
-            <Button icon={'plus'}>Create</Button>
-        </div>
-        <div style={{clear: 'both'}}/>
-        <Table rowSelection={rowSelection} columns={columns} dataSource={data} rowKey={'id'}/>
-    </BaseContent>
+    return <PageHeaderWrapper title={'Users'} extra={<ButtonLink icon={'plus'} href={"/users/create"}>Create</ButtonLink>}>
+        <BaseContent>
+            <Table size={'middle'} rowSelection={rowSelection} columns={columns} dataSource={data}
+                   rowKey={'id'}/>
+        </BaseContent>
+    </PageHeaderWrapper>
 };
 
 export default Users;

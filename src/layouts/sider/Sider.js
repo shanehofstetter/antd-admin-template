@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Icon, Layout, Menu} from 'antd';
 import './Sider.scss';
 import logo from "../../logo.svg";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 
 let firstRender = true;
@@ -40,12 +40,12 @@ const Sider = (props) => {
             theme={theme}
         >
             <div className={"brand"}>
-                <NavLink to={'/'}>
+                <Link to={'/'}>
                     <div className={"logo"}>
                         <img alt="logo" src={logo}/>
                         {collapsed ? null : <h1>Admin Template</h1>}
                     </div>
-                </NavLink>
+                </Link>
             </div>
 
             <div className={"menuContainer"}>
