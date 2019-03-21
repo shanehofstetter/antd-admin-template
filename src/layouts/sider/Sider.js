@@ -49,7 +49,7 @@ const Sider = (props) => {
             </div>
 
             <div className={"menuContainer"}>
-                <Menu theme={theme} mode="inline" defaultSelectedKeys={[props.location.pathname]}>
+                <Menu theme={theme} mode="inline" selectedKeys={[props.location.pathname]}>
                     <Menu.Item key="/users">
                         <NavLink to="/users" {...navLinkProps}>
                             <Icon type="user"/>
