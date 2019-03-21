@@ -20,6 +20,10 @@ const Sider = (props) => {
         firstRender = false;
     });
 
+    const navLinkProps = {
+      onClick: () => (isMobile && onCollapseChange) ? onCollapseChange(true) : null
+    };
+
     return (
         <Layout.Sider
             width={width}
@@ -47,19 +51,19 @@ const Sider = (props) => {
             <div className={"menuContainer"}>
                 <Menu theme={theme} mode="inline" defaultSelectedKeys={[props.location.pathname]}>
                     <Menu.Item key="/users">
-                        <NavLink to="/users">
+                        <NavLink to="/users" {...navLinkProps}>
                             <Icon type="user"/>
                             <span className="nav-text">Users</span>
                         </NavLink>
                     </Menu.Item>
                     <Menu.Item key="/videos">
-                        <NavLink to="/videos">
+                        <NavLink to="/videos" {...navLinkProps}>
                             <Icon type="video-camera"/>
                             <span className="nav-text">Videos</span>
                         </NavLink>
                     </Menu.Item>
                     <Menu.Item key="/items">
-                        <NavLink to="/items">
+                        <NavLink to="/items" {...navLinkProps}>
                             <Icon type="shopping-cart"/>
                             <span className="nav-text">Items</span>
                         </NavLink>

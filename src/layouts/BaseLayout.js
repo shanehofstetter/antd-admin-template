@@ -22,7 +22,7 @@ export const BaseLayout = (props) => {
         }
     });
 
-    return <Layout style={{height: '100vh'}}>
+    return <Layout style={{minHeight: '100vh'}}>
         <DynamicSider isMobile={isMobile} collapsed={isSiderCollapsed}
                       onCollapseChange={() => setSiderCollapsed(!isSiderCollapsed)} width={siderWidth}/>
 
