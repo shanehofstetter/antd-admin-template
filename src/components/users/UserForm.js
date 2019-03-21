@@ -2,6 +2,7 @@ import {
     Form, Input, Tooltip, Icon, Cascader, Select, Checkbox, Button,
 } from 'antd';
 import React from "react";
+import {mapModelAttributesToFormFields} from "../../utils/form";
 
 const {Option} = Select;
 
@@ -186,7 +187,8 @@ class RegistrationForm extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item {...fullWidthLayout} style={{textAlign: 'right'}}>
-                    <Button type="secondary" style={{marginRight: '10px'}} onClick={(e) => this.handleCancel(e)}>Cancel</Button>
+                    <Button type="secondary" style={{marginRight: '10px'}}
+                            onClick={(e) => this.handleCancel(e)}>Cancel</Button>
                     <Button type="primary" htmlType="submit">Save</Button>
                 </Form.Item>
             </Form>
@@ -194,6 +196,9 @@ class RegistrationForm extends React.Component {
     }
 }
 
-const WrappedRegistrationForm = Form.create({name: 'register'})(RegistrationForm);
+const WrappedRegistrationForm = Form.create({
+    name: 'register',
+    mapPropsToFields: (props) => mapModelAttributesToFormFields(props.user)
+})(RegistrationForm);
 
 export default WrappedRegistrationForm;

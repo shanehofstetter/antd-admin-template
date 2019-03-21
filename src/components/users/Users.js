@@ -22,7 +22,7 @@ const Users = (props) => {
         key: 'x',
         render: (user) => {
             return <div>
-                <Button icon={'edit'} shape="circle" type="primary"/>
+                <ButtonLink icon={'edit'} shape="circle" type="primary" href={'/users/1/edit'}/>
                 <Button icon={'delete'} shape="circle" type="danger" style={{marginLeft: '10px'}}/>
             </div>;
         },
