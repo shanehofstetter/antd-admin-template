@@ -21,7 +21,18 @@ const Sider = (props) => {
     });
 
     const navLinkProps = {
-      onClick: () => (isMobile && onCollapseChange) ? onCollapseChange(true) : null
+        onClick: () => (isMobile && onCollapseChange) ? onCollapseChange(true) : null
+    };
+
+    const getSelectedKeys = () => {
+        // from path like /users/create we generate keys: /users, /users/create
+        let keys = props.location.pathname.split('/').filter(k => k.length > 0);
+        if (keys.length === 0) return [];
+        const selectedKeys = [];
+        for (let i = 1; i <= keys.length; i++) {
+            selectedKeys.push('/' + keys.slice(0, i).join('/'));
+        }
+        return selectedKeys;
     };
 
     return (
@@ -49,7 +60,7 @@ const Sider = (props) => {
             </div>
 
             <div className={"menuContainer"}>
-                <Menu theme={theme} mode="inline" selectedKeys={[props.location.pathname]}>
+                <Menu theme={theme} mode="inline" selectedKeys={getSelectedKeys()}>
                     <Menu.Item key="/users">
                         <NavLink to="/users" {...navLinkProps}>
                             <Icon type="user"/>
