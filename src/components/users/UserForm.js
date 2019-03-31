@@ -3,6 +3,7 @@ import {
 } from 'antd';
 import React from "react";
 import {mapModelAttributesToFormFields} from "../../utils/form";
+import FileInput from "../common/FileInput";
 
 const {Option} = Select;
 
@@ -136,7 +137,7 @@ class RegistrationForm extends React.Component {
                             validator: this.validateToNextPassword,
                         }],
                     })(
-                        <Input type="password"/>
+                        <Input.Password type="password"/>
                     )}
                 </Form.Item>
                 <Form.Item label="Confirm Password">
@@ -147,7 +148,7 @@ class RegistrationForm extends React.Component {
                             validator: this.compareToFirstPassword,
                         }],
                     })(
-                        <Input type="password" onBlur={this.handleConfirmBlur}/>
+                        <Input.Password type="password" onBlur={this.handleConfirmBlur}/>
                     )}
                 </Form.Item>
                 <Form.Item
@@ -177,6 +178,15 @@ class RegistrationForm extends React.Component {
                         rules: [{required: true, message: 'Please input your phone number!'}],
                     })(
                         <Input addonBefore={prefixSelector} style={{width: '100%'}}/>
+                    )}
+                </Form.Item>
+                <Form.Item label="Avatar">
+                    {getFieldDecorator('avatar', {
+                        rules: [{
+                            required: true, message: 'Please choose an avatar!',
+                        }]
+                    })(
+                        <FileInput text={'Choose File'}/>
                     )}
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
