@@ -1,6 +1,7 @@
 import {Layout, Avatar, Icon, Menu, Dropdown} from "antd";
 import * as classnames from "classnames";
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
 
@@ -12,8 +13,10 @@ const Header = (props) => {
     const menu = (
         <Menu className={'user-menu'} selectedKeys={[]}>
             <Menu.Item key="userCenter">
-                <Icon type="user"/>
-                Account
+                <NavLink to={'/account'}>
+                    <Icon type="user"/>
+                    Account
+                </NavLink>
             </Menu.Item>
             <Menu.Item key="userinfo">
                 <Icon type="setting"/>
@@ -42,14 +45,14 @@ const Header = (props) => {
         </div>
         <div className={'right-content'}>
             <Dropdown overlay={menu}>
-            <div className={'user-menu'}>
-              <Avatar
-                  size="small"
-                  className={'user-avatar'}
-                  icon="user"
-                  alt="avatar"
-              />
-            </div>
+                <div className={'user-menu'}>
+                    <Avatar
+                        size="small"
+                        className={'user-avatar'}
+                        icon="user"
+                        alt="avatar"
+                    />
+                </div>
             </Dropdown>
         </div>
     </Layout.Header>
