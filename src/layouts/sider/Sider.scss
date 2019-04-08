@@ -47,7 +47,7 @@
   }
 }
 
-.menuContainer {
+.menu-container {
   height: calc(100vh - 120px);
   overflow-x: hidden;
   flex: 1;
@@ -67,17 +67,5 @@
     .ant-menu-inline {
       border-right: none;
     }
-  }
-}
-
-@keyframes fadeLeftIn {
-  0% {
-    transform: translateX(5px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
   }
 }

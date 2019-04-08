@@ -35,7 +35,7 @@ const Account = (props) => {
                 <Col lg={7} md={24}>
                     <Card bordered={false} style={{marginBottom: 24}} loading={false}>
                         <div>
-                            <div className={'avatarHolder'}>
+                            <div className={'avatar-holder'}>
                                 <img alt="" src={currentUser.avatar}/>
                                 <div className={'name'}>{currentUser.name}</div>
                                 <div>{currentUser.signature}</div>
@@ -56,7 +56,7 @@ const Account = (props) => {
                             </div>
                             <Divider style={{marginTop: 16}} dashed/>
                             <div className={'team'}>
-                                <div className={'teamTitle'}>Projects</div>
+                                <div className={'team-title'}>Projects</div>
                                 <Spin spinning={false}>
                                     <Row gutter={36}>
                                         {projects.map(item => (
@@ -75,7 +75,7 @@ const Account = (props) => {
                 </Col>
                 <Col lg={17} md={24}>
                     <Card
-                        className={'tabsCard'}
+                        className={'tabs-card'}
                         bordered={false}
                     >
                         <Skeleton />

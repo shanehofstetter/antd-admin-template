@@ -1,4 +1,4 @@
-.avatarHolder {
+.avatar-holder {
   text-align: center;
   margin-bottom: 24px;
 
@@ -49,8 +49,7 @@
   }
 }
 
-.tagsTitle,
-.teamTitle {
+.team-title {
   font-weight: 500;
   margin-bottom: 12px;
 }
@@ -77,7 +76,7 @@
   }
 }
 
-.tabsCard {
+.tabs-card {
   :global {
     .ant-card-head {
       padding: 0 16px;

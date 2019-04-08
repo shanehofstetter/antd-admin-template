@@ -59,7 +59,7 @@ const Sider = (props) => {
                 </Link>
             </div>
 
-            <div className={"menuContainer"}>
+            <div className={"menu-container"}>
                 <Menu theme={theme} mode="inline" selectedKeys={getSelectedKeys()}>
                     <Menu.Item key="/users">
                         <NavLink to="/users" {...navLinkProps}>
