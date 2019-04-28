@@ -4,6 +4,7 @@ import {
 import React from "react";
 import {mapModelAttributesToFormFields} from "../../utils/form";
 import FileInput from "../common/FileInput";
+import ImageInput from "../common/ImageInput";
 
 const {Option} = Select;
 
@@ -187,6 +188,15 @@ class RegistrationForm extends React.Component {
                         }]
                     })(
                         <FileInput text={'Choose File'}/>
+                    )}
+                </Form.Item>
+                <Form.Item label="Avatar Preview">
+                    {getFieldDecorator('avatar_preview', {
+                        rules: [{
+                            required: true, message: 'Please choose an avatar!',
+                        }]
+                    })(
+                        <ImageInput text={'Choose Image'}/>
                     )}
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
