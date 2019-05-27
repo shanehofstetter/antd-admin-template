@@ -182,7 +182,7 @@ class RegistrationForm extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item label="Avatar">
-                    {getFieldDecorator('avatar', {
+                    {getFieldDecorator('avatar_simple', {
                         rules: [{
                             required: true, message: 'Please choose an avatar!',
                         }]
@@ -191,7 +191,7 @@ class RegistrationForm extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item label="Avatar Preview">
-                    {getFieldDecorator('avatar_preview', {
+                    {getFieldDecorator('avatar', {
                         rules: [{
                             required: true, message: 'Please choose an avatar!',
                         }]

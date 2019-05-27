@@ -1,11 +1,17 @@
-import {Button, Modal, Upload} from "antd";
+import {Icon, Modal, Upload} from "antd";
 import React, {useState} from "react";
+import styles from "./ImageInput.module.scss";
 
-const ImageInput = React.forwardRef(({text, onChange, ...rest}, ref) => {
+const ImageInput = React.forwardRef(({text, onChange, value, ...rest}, ref) => {
+
+    const initialFile = value && value.url ? {
+        uid: value.url,
+        ...value,
+    } : null;
 
     const beforeUpload = () => false;
 
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(initialFile);
     const [previewing, setPreviewing] = useState(false);
 
     const handleChange = (e) => {
@@ -29,17 +35,26 @@ const ImageInput = React.forwardRef(({text, onChange, ...rest}, ref) => {
         setPreviewing(true);
     };
 
+    const uploadButton = (
+        <div>
+            <Icon type={'plus'} style={{fontSize: "32px", color: "#999"}}/>
+            <div className={styles.text}>{text}</div>
+        </div>
+    );
+
     return (
         <React.Fragment>
             <Upload fileList={file ? [file] : []}
                     onChange={handleChange}
                     beforeUpload={beforeUpload}
                     onPreview={handlePreview}
-                    multiple={false}  {...rest}
+                    multiple={false}
+                    {...rest}
                     ref={ref}
                     listType={'picture-card'}
-                    accept={'image/*'}>
-                {file ? null : <Button icon="upload">{text}</Button>}
+                    accept={'image/*'}
+                    className={styles["image-input"]}>
+                {file ? null : uploadButton}
             </Upload>
             <Modal visible={previewing} footer={null} onCancel={handleCancel}>
                 <img alt={file ? file.name : ''} style={{width: '100%'}} src={file ? file.url : null}/>

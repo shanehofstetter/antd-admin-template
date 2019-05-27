@@ -1,0 +1,12 @@
+.image-input {
+  :global {
+    .ant-upload, .ant-upload-list-item {
+      width: 128px;
+      height: 128px;
+    }
+  }
+
+  .text {
+    margin-top: 8px;
+  }
+}
